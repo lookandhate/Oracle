@@ -13,7 +13,7 @@
    e. Portfolio Section
    f. Call To Action Section
    g. Testimonials Section
-   h. Contact Section
+   h. Demoform Section
    i. Footer
 
 ===================================================================== */
@@ -33,7 +33,7 @@ header {
    height: 800px;
    min-height: 500px;
    width: 100%;
-   
+    background-color:#97BACB ;
    text-align: center;
    overflow: hidden;
 }
@@ -56,10 +56,11 @@ header .banner {
 
 header .banner-text { width: 100%; }
 header .banner-text h1 {
-   font: 90px/1.1em 'opensans-bold', sans-serif;
+   font: 90px/1.1em 'Mistrully', sans-serif;
    color: #fff;
    letter-spacing: -2px;
    margin: 0 auto 18px auto;
+
 }
 header .banner-text h3 {
    font: 18px/1.9em 'librebaskerville-regular', serif;
@@ -80,16 +81,16 @@ header .banner-text hr {
 
 /* header social links */
 header .social {
-   margin: 24px 0;
+   margin: 24px 0px;
    padding: 0;
    font-size: 30px;
 }
 header .social li {
-   display: inline-block;
-   margin: 0 15px;
-   padding: 0;
+    display: inline-block;
+    margin: 0 15px;
+    padding: 0;
 }
-header .social li a { color: #fff; }
+header .social li a { color: #fff; text-align: center }
 header .social li a:hover { color: #0762f9; }
 
 /* scrolldown link */
@@ -114,8 +115,8 @@ header .scrolldown a {
 }
 header .scrolldown a:hover { color: #0762f9; }
 
-/* primary navigation
---------------------------------------------------------------------- */
+/* primary navigation*/
+
 #nav-wrap ul, #nav-wrap li, #nav-wrap a {
 	 margin: 0;
 	 padding: 0;
@@ -128,14 +129,14 @@ header .scrolldown a:hover { color: #0762f9; }
    font: 12px 'opensans-bold', sans-serif;
    width: 100%;
    text-transform: uppercase;
-   letter-spacing: 2.5px;
+   letter-spacing: 2px;
    margin: 0 auto;
    z-index: 100;
    position: fixed;
    left: 0;
    top: 0;
 }
-.opaque { background-color: #333; }
+.opaque { background-color: #97BACB; }
 
 /* hide toggle button */
 #nav-wrap > a.mobile-btn { display: none; }
@@ -174,15 +175,18 @@ ul#nav li a {
 }
 
 ul#nav li a:active { background-color: transparent !important; }
-ul#nav li.current a { color: #fe6928; }
+ul#nav li.current a {
+    color: gray;
+    border-bottom: 1px solid gray;
+    padding-bottom: 0px;
+
+}
 
 
-/* ------------------------------------------------------------------ */
-/* c. About Section
-/* ------------------------------------------------------------------ */
+/*about section */
 
 #about {
-   background: #000524;
+   background: #34495e;
    padding-top: 96px;
    padding-bottom: 66px;
    overflow: hidden;
@@ -196,9 +200,19 @@ ul#nav li.current a { color: #fe6928; }
    color: #fff;
    margin-bottom: 12px;
 }
-#about p {
-   line-height: 30px;
-   color: #ccc;
+#about h1{
+    font: 50px/1.9em 'Mistrully', sans-serif;
+    color: #FFFFFF;
+}
+#about p  {
+    line-height: 30px;
+    color: #ccc;
+    font-size: 20px;
+}
+#about ul{
+    line-height: 30px;
+    color: #ccc;
+    font-size: 20px;
 }
 #about .profile-pic {
    position: relative;
@@ -214,7 +228,7 @@ ul#nav li.current a { color: #fe6928; }
 #about .main-col { padding-right: 5%; }
 #about .download .button {
    margin-top: 6px;
-   background: #444;
+   background: #1abc9c;
 }
 #about .download .button:hover {
    background: #fff;
@@ -785,7 +799,7 @@ call-to-action .button {
 }
 
 /* ------------------------------------------------------------------ */
-/* h. Contact Section
+/* h. Demoform Section
 /* ------------------------------------------------------------------ */
 
 #contact {
