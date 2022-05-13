@@ -3,12 +3,12 @@ import Zmage from "react-zmage";
 import Fade from "react-reveal";
 
 let id = 0;
-class Portfolio extends Component {
+class Gallery extends Component {
   render() {
     if (!this.props.data) return null;
 
     const projects = this.props.data.projects.map(function (projects) {
-      let projectImage = "images/portfolio/" + projects.image;
+      let projectImage = "images/gallery/" + projects.image;
 
       return (
         <div key={id++} className="columns portfolio-item">
@@ -41,4 +41,4 @@ class Portfolio extends Component {
   }
 }
 
-export default Portfolio;
+export default Gallery;

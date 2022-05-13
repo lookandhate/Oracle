@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import ParticlesBg from "particles-bg";
 import Fade from "react-reveal";
+
 
 class Header extends Component {
   render() {
@@ -29,22 +29,17 @@ class Header extends Component {
             </li>
 
             <li>
-              <a className="smoothscroll" href="#resume">
+              <a className="smoothscroll" href="#demofunctional">
                 Демо версия
               </a>
             </li>
 
             <li>
-              <a className="smoothscroll" href="#portfolio">
+              <a className="smoothscroll" href="/">
                 Регистрация
               </a>
             </li>
 
-            <li>
-              <a className="smoothscroll" href="#contact">
-                Contact
-              </a>
-            </li>
           </ul>
         </nav>
 
@@ -56,10 +51,10 @@ class Header extends Component {
             <hr />
             <Fade bottom duration={2000}>
               <ul className="social">
-                <a href='/' className="button btn project-btn">
+                <a href='#demofunctional' className="button btn button-header1">
                   Перейти к демо версии
                 </a>
-                <a href='/' className="button btn github-btn">
+                <a href='/' className="button btn header-button2">
                   Зарегистрироваться
                 </a>
               </ul>

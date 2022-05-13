@@ -5,10 +5,8 @@ import "./App.css";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import About from "./Components/About";
-import Resume from "./Components/Resume";
-import Demoform from "./Components/demoform";
-import Portfolio from "./Components/Portfolio";
-
+import Demoform from "./Components/Demoform";
+import Registration from "./Components/Registration";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -46,8 +44,8 @@ class App extends Component {
         <Header data={this.state.resumeData.main} />
         <About data={this.state.resumeData.main} />
         <Demoform data={this.state.resumeData.main} />
-        <Portfolio data={this.state.resumeData.portfolio} />
         <Footer data={this.state.resumeData.main} />
+        <Registration data = {this.state.resumeData.main}/>
       </div>
     );
   }
