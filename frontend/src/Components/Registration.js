@@ -40,10 +40,10 @@ export default function Registration() {
                     <div className="formbg-outer">
                         <div className="formbg">
                             <div className="formbg-inner padding-horizontal--48">
-                                <span className="padding-bottom--15">Sign in to your account</span>
-                                <form id="stripe-login" method="post" action="http://localhost:1337/">
+                                <span className="padding-bottom--15">Registration</span>
+                                <form id="stripe-login" method="post">
                                     <div className="field padding-bottom--24">
-                                        <label htmlFor="email">Email</label>
+                                        <label htmlFor="email">Login</label>
                                         <input type="email" name="email" value={login}
                                                onChange={(e => setLogin(e.target.value))}/>
                                     </div>
@@ -62,12 +62,6 @@ export default function Registration() {
                                     </div>
 
                                 </form>
-                            </div>
-                        </div>
-                        <div className="footer-link padding-top--24">
-                            <span>Don't have an account? <a href>Sign up</a></span>
-                            <div className="listing padding-top--24 padding-bottom--24 flex-flex center-center">
-                                <span><a href="#">©2022 Shakespeare</a></span>
                             </div>
                         </div>
                     </div>

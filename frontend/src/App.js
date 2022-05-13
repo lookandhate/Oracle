@@ -37,20 +37,25 @@ import Login from "./Components/Login";
 // }
 
 const App = () => {
-    const token = useContext(UserContext)
+    const [token, setToken] = useContext(UserContext)
+    // token = localStorage.getItem('token')
     console.error(`token is ${token}`)
     return (
         <>
             <div className="App">
                 <Header/>
                 <About/>
-                <Demoform/>
-                <Footer/>
-                <Registration/>
                 {!token ? (
-                    <div className="columns">
-                        <Registration/> <Login/>
-                    </div>
+                    <>
+                        <Demoform/>
+                    </>
+                ) : <div></div>}
+                <Footer/>
+                {!token ? (
+                    <>
+                        <Registration/>
+                        <Login/>
+                    </>
                 ) : (
                     <div></div>
                 )}
