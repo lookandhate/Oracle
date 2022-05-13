@@ -34,21 +34,28 @@ const Header = () => {
                         <NavBarElement hrefTag="#about" textVal="О проекте"/>
                     </li>
 
-                    <li>
-                        <NavBarElement hrefTag="#demofunctional" textVal="Демо версия"/>
-                    </li>
-
-                    <li>
-                        <NavBarElement hrefTag="#registration" textVal="Регистрация"/>
-                    </li>
                     {token ? (
-
-                        <li>
-                            <button onClick={setToken}>Logout</button>
-                        </li>
-                    ) : (<li>
-                        <a href="#login">login</a>
-                    </li>)
+                            <>
+                                <li>
+                                    <NavBarElement hrefTag="#demofunctional" textVal="Полная версия"/>
+                                </li>
+                                <li>
+                                    <button onClick={setToken}>Logout</button>
+                                </li>
+                            </>)
+                        : (
+                            <>
+                                <li>
+                                    <NavBarElement hrefTag="#demofunctional" textVal="Демо версия"/>
+                                </li>
+                                <li>
+                                    <NavBarElement hrefTag="#login" textVal="Login"/>
+                                </li>
+                                <li>
+                                    <NavBarElement hrefTag="#registration" textVal="Регистрация"/>
+                                </li>
+                            </>
+                        )
                     }
                 </ul>
             </nav>
