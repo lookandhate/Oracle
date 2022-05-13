@@ -2,7 +2,8 @@ import logging
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routes.shakespeare import router
+from .routes.shakespeare import shakespeare_router
+from .routes.auth import auth_router
 from .db.db_session import *
 
 app = FastAPI()
@@ -14,7 +15,8 @@ origins = [
     "localhost:3000"
 ]
 
-app.include_router(router)
+app.include_router(shakespeare_router)
+app.include_router(auth_router)
 
 app.add_middleware(
     CORSMiddleware,

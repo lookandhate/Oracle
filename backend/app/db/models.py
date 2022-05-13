@@ -14,6 +14,9 @@ class User(SqlAlchemyBase):
 
     requests = relationship('ShortenRequest', back_populates='user')
 
+    def __str__(self):
+        return f'User(id={self.id}, username={self.username})'
+
 
 class ShortenRequest(SqlAlchemyBase):
     __tablename__ = 'shorten_requests'
@@ -25,3 +28,6 @@ class ShortenRequest(SqlAlchemyBase):
 
     user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship(User, back_populates='requests')
+
+    def __str__(self):
+        return f'ShortenRequest(id={self.id}, user={self.user})'

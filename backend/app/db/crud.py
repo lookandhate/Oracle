@@ -29,4 +29,3 @@ def create_shorten_request(db: Session, shorten_request: ResponseModel, user: Us
     db.add(db_item)
     db.commit()
     db.refresh(db_item)
-   

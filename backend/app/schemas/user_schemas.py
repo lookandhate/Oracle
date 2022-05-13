@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from request_models import ResponseModelBase
+from .request_models import ResponseModelBase
 
 
 class UserBase(BaseModel):
