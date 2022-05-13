@@ -14,6 +14,9 @@ class User(SqlAlchemyBase):
 
     requests = relationship('ShortenRequest', back_populates='user')
 
+    def verify_password(self, password_hash):
+        return password_hash == self.password
+
     def __str__(self):
         return f'User(id={self.id}, username={self.username})'
 
