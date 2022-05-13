@@ -3,7 +3,7 @@ import Fade from "react-reveal";
 
 class About extends Component {
   render() {
-    if (!this.props.data) return null;
+    // if (!this.props.data) return null;
 
 
     return (

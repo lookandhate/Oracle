@@ -20,7 +20,8 @@ async def user_registration(
         db: Session = Depends(get_session)
 ):
     user = create_user(db, user)
-    print(user)
+    token = create_token(user)
+    return token
 
 
 @auth_router.post('/get_token')

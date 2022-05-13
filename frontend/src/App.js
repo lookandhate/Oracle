@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component, useContext} from "react";
 import ReactGA from "react-ga";
 import $ from "jquery";
 import "./App.css";
@@ -7,48 +7,57 @@ import Footer from "./Components/Footer";
 import About from "./Components/About";
 import Demoform from "./Components/Demoform";
 import Registration from "./Components/Registration";
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      foo: "bar",
-      resumeData: {}
-    };
+import {UserContext} from "./context/UserContext";
+import Login from "./Components/Login";
 
-    ReactGA.initialize("UA-110570651-1");
-    ReactGA.pageview(window.location.pathname);
-  }
+// class App extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             foo: "bar",
+//             resumeData: {}
+//         };
+//
+//         ReactGA.initialize("UA-110570651-1");
+//         ReactGA.pageview(window.location.pathname);
+//     }
+//
+//
+//     render() {
+//         return (
+//             <div className="App">
+//                 <Header/>
+//                 <About/>
+//                 <Demoform/>
+//                 <Footer/>
+//                 <Registration/>
+//             </div>
+//         );
+//     }
+// }
 
-  getResumeData() {
-    $.ajax({
-      url: "./resumeData.json",
-      dataType: "json",
-      cache: false,
-      success: function(data) {
-        this.setState({ resumeData: data });
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
-        alert(err);
-      }
-    });
-  }
-
-  componentDidMount() {
-    this.getResumeData();
-  }
-
-  render() {
+const App = () => {
+    const token = useContext(UserContext)
+    console.error(`token is ${token}`)
     return (
-      <div className="App">
-        <Header data={this.state.resumeData.main} />
-        <About data={this.state.resumeData.main} />
-        <Demoform data={this.state.resumeData.main} />
-        <Footer data={this.state.resumeData.main} />
-        <Registration data = {this.state.resumeData.main}/>
-      </div>
+        <>
+            <div className="App">
+                <Header/>
+                <About/>
+                <Demoform/>
+                <Footer/>
+                <Registration/>
+                {!token ? (
+                    <div className="columns">
+                        <Registration/> <Login/>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
+            </div>
+        </>
+
     );
-  }
 }
 
 export default App;

@@ -3,7 +3,7 @@ import { Fade, Slide } from "react-reveal";
 
 class Demoform extends Component {
   render() {
-    if (!this.props.data) return null;
+    // if (!this.props.data) return null;
     return (
       <section id="demofunctional">
         <Fade bottom duration={1000}>
