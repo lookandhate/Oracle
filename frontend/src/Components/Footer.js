@@ -3,7 +3,7 @@ import Fade from "react-reveal";
 
 class Footer extends Component {
   render() {
-    if (!this.props.data) return null;
+    // if (!this.props.data) return null;
     return (
       <footer>
         <div className="row">

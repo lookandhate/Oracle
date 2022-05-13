@@ -6,3 +6,5 @@ networkx
 transformers
 summarizer
 tensorflow
+pyjwt
+pip

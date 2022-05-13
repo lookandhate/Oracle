@@ -4,7 +4,7 @@ import Fade from "react-reveal";
 
 class Header extends Component {
   render() {
-    if (!this.props.data) return null;
+    // if (!this.props.data) return null;
     return (
       <header id="home">
         <nav id="nav-wrap">
@@ -35,7 +35,7 @@ class Header extends Component {
             </li>
 
             <li>
-              <a className="smoothscroll" href="/">
+              <a className="smoothscroll" href="#registration">
                 Регистрация
               </a>
             </li>
