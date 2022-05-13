@@ -12,7 +12,7 @@ const NavBarElement = (props) => {
 
 
 const Header = () => {
-    const [token] = useContext(UserContext)
+    const [token, setToken] = useContext(UserContext)
     // if (!this.props.data) return null;
     return (
         <header id="home">
@@ -40,6 +40,9 @@ const Header = () => {
 
                     <li>
                         <NavBarElement hrefTag="#registration" textVal="Регистрация"/>
+                    </li>
+                    <li>
+                        <button onClick={setToken}>Logout</button>
                     </li>
                 </ul>
             </nav>

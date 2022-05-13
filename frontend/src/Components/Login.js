@@ -9,6 +9,7 @@ const Login = () => {
     const [, setToken] = useContext(UserContext);
 
     const submitLogin = async () => {
+        console.log(`${login}\n${password}`)
         const requestOptions = {
             method: "POST",
             headers: {"Content-Type": "application/x-www-form-urlencoded"},
