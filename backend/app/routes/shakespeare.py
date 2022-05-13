@@ -1,6 +1,6 @@
 from summarizer import summarize
 
-from ..models.request_models import ParaphraseRequestModel, T5SummaryRequestModel
+from ..schemas.request_models import ParaphraseRequestModel, T5SummaryRequestModel
 from ..networks.Summary import Summary
 from ..networks.T5Summary import T5Summary, Summarizer
 from fastapi import APIRouter

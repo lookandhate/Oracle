@@ -3,8 +3,11 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routes.shakespeare import router
+from .db.db_session import *
 
 app = FastAPI()
+global_init()
+session = get_session()
 
 origins = [
     "http://localhost:3000",
