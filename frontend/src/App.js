@@ -5,7 +5,7 @@ import "./App.css";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import About from "./Components/About";
-import Demoform from "./Components/Demoform";
+import Demoform, {FullAccessForm} from "./Components/Demoform";
 import Registration from "./Components/Registration";
 import {UserContext} from "./context/UserContext";
 import Login from "./Components/Login";
@@ -49,7 +49,7 @@ const App = () => {
                     <>
                         <Demoform/>
                     </>
-                ) : <div></div>}
+                ) : <FullAccessForm/>}
                 <Footer/>
                 {!token ? (
                     <>

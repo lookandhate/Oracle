@@ -119,7 +119,7 @@ const Demoform = () => {
     );
 }
 
-const FullAccessForm = () => {
+export const FullAccessForm = () => {
     const [resultText, changeResultText] = useState("")
     const [inputText, changeInputText] = useState("")
     const [token, setToken] = useContext(UserContext)
@@ -237,3 +237,4 @@ const FullAccessForm = () => {
 }
 
 export default Demoform;
+
