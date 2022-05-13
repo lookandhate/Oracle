@@ -5,7 +5,7 @@ import "./App.css";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import About from "./Components/About";
-import Demoform from "./Components/Demoform";
+import Demoform, {FullAccessForm} from "./Components/Demoform";
 import Registration from "./Components/Registration";
 import {UserContext} from "./context/UserContext";
 import Login from "./Components/Login";
@@ -37,20 +37,25 @@ import Login from "./Components/Login";
 // }
 
 const App = () => {
-    const token = useContext(UserContext)
+    const [token, setToken] = useContext(UserContext)
+    // token = localStorage.getItem('token')
     console.error(`token is ${token}`)
     return (
         <>
             <div className="App">
                 <Header/>
                 <About/>
-                <Demoform/>
-                <Footer/>
-                <Registration/>
                 {!token ? (
-                    <div className="columns">
-                        <Registration/> <Login/>
-                    </div>
+                    <>
+                        <Demoform/>
+                    </>
+                ) : <FullAccessForm/>}
+                <Footer/>
+                {!token ? (
+                    <>
+                        <Registration/>
+                        <Login/>
+                    </>
                 ) : (
                     <div></div>
                 )}
