@@ -1,8 +1,9 @@
 from pydantic import BaseModel
+from request_models import ResponseModelBase
 
 
 class UserBase(BaseModel):
-    email: str
+    username: str
 
 
 class UserCreate(UserBase):
@@ -10,4 +11,8 @@ class UserCreate(UserBase):
 
 
 class User(UserBase):
-    id: int,
+    id: int
+    requests = list[ResponseModelBase]
+
+    class Config:
+        orm_mode=True
