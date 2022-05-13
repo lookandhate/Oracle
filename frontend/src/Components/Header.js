@@ -41,9 +41,15 @@ const Header = () => {
                     <li>
                         <NavBarElement hrefTag="#registration" textVal="Регистрация"/>
                     </li>
-                    <li>
-                        <button onClick={setToken}>Logout</button>
-                    </li>
+                    {token ? (
+
+                        <li>
+                            <button onClick={setToken}>Logout</button>
+                        </li>
+                    ) : (<li>
+                        <a href="#login">login</a>
+                    </li>)
+                    }
                 </ul>
             </nav>
 
