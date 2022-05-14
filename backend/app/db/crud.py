@@ -67,9 +67,11 @@ def create_token(user: models.User):
 
 def get_current_user(db: Session = Depends(get_session), token: str = Depends(oauth2scheme)):
     try:
+        print(f'{token=}')
         payload = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+        print(f'{payload=}')
         user = db.query(models.User).get(payload["id"])
-    except:
+    except Exception as e:
         raise fastapi.HTTPException(status_code=401, detail="Invalid email or password")
 
     return User.from_orm(user)

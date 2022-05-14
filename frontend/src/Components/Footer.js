@@ -10,7 +10,7 @@ class Footer extends Component {
           <Fade bottom>
             <div className="twelve columns">
               <ul className="copyright">
-                <li>&copy;  Все права принадлежат студентам политеха</li>
+                <li>&copy;  Все права принадлежат студентам паликека</li>
 
               </ul>
             </div>

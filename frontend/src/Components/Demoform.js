@@ -11,7 +11,7 @@ const Demoform = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Bearer": token
+                Authorization: "Bearer " + token
             },
             body: JSON.stringify(
                 {
@@ -32,7 +32,7 @@ const Demoform = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Bearer": token
+                Authorization: "Bearer " + token
             },
             body: JSON.stringify(
                 {
@@ -70,6 +70,7 @@ const Demoform = () => {
                     rows="15"
                     id="contactMessage"
                     name="contactMessage"
+                    disabled="true"
                 >{resultText}</textarea>
             </div>
         )
@@ -131,12 +132,12 @@ export const FullAccessForm = () => {
     const [resultText, changeResultText] = useState("")
     const [inputText, changeInputText] = useState("")
     const [token, setToken] = useContext(UserContext)
-    const handleNNClick = async (token) => {
+    const handleNNClick = async () => {
         const requestOptions = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Bearer": token
+                Authorization: "Bearer " + token
             },
             body: JSON.stringify(
                 {
@@ -152,12 +153,12 @@ export const FullAccessForm = () => {
         changeResultText(data.summarized)
     }
 
-    const handleAlgorithmClick = async (token) => {
+    const handleAlgorithmClick = async () => {
         const requestOptions = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Bearer": token
+                Authorization: "Bearer " + token,
             },
             body: JSON.stringify(
                 {
@@ -195,6 +196,7 @@ export const FullAccessForm = () => {
                     rows="15"
                     id="contactMessage"
                     name="contactMessage"
+                    disabled="true"
                 >{resultText}</textarea>
             </div>
         )
