@@ -40,9 +40,14 @@ async def paraphrase(request_data: ParaphraseRequestModel, user: User | None = D
 
 
 @shakespeare_router.post('/t5_paraphrase', tags=['ml_models_endpoint'])
-async def t5_summary(request_data: T5SummaryRequestModel):
+async def t5_summary(request_data: T5SummaryRequestModel, user: User | None = Depends(get_current_user),
+                     db: Session = Depends(get_session)):
     model: T5Summary = models['t5']
     text = model.summarize(request_data.text, request_data.min_length, request_data.max_length)[0]['summary_text']
+
+    if user:
+        create_shorten_request(db, text, request_data.text, user, 'nn')
+
     return {'text': request_data.text,
             'summarized': text,
             "type": "t5"}
