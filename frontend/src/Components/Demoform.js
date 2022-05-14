@@ -16,8 +16,8 @@ const Demoform = () => {
             body: JSON.stringify(
                 {
                     "text": inputText,
-                    "min_length": inputText.length * 0.2,
-                    "max_length": inputText.length * 0.8
+                    "min_length": inputText.split(" ").length * 0.2,
+                    "max_length": inputText.split(" ").length * 0.8
                 }
             ),
         };
@@ -142,8 +142,8 @@ export const FullAccessForm = () => {
             body: JSON.stringify(
                 {
                     "text": inputText,
-                    "min_length": inputText.length * 0.2,
-                    "max_length": inputText.length * 0.8
+                    "min_length": inputText.split(" ").length * 0.2,
+                    "max_length": inputText.split(" ").length * 0.8
                 }
             ),
         };
