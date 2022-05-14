@@ -32,12 +32,19 @@ def create_user(db: Session, user: UserCreate):
     return created_user_instance
 
 
-def create_shorten_request(db: Session, shorten_request: ResponseModel, user: User):
+def create_shorten_request(db: Session, summarized_data, text, user: User, shorten_type: str,
+                           shorten_request: ResponseModel | None = None):
     user = get_user_by_username(db, user.username)
-    db_item = models.ShortenRequest(text=shorten_request.text,
-                                    shorten_type=shorten_request.shorten_type,
-                                    result=shorten_request.result,
-                                    user_id=shorten_request.user_id)
+    if shorten_request:
+        db_item = models.ShortenRequest(text=shorten_request.text,
+                                        shorten_type=shorten_request.shorten_type,
+                                        result=shorten_request.result,
+                                        user_id=shorten_request.user_id),
+    else:
+        db_item = models.ShortenRequest(text=text,
+                                        shorten_type=shorten_type,
+                                        result=summarized_data,
+                                        user=user)
     db.add(db_item)
     db.commit()
     db.refresh(db_item)

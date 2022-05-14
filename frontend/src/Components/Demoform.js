@@ -14,12 +14,17 @@ const Demoform = () => {
                 "Bearer": token
             },
             body: JSON.stringify(
-
+                {
+                    "text": inputText,
+                    "min_length": inputText.length * 0.2,
+                    "max_length": inputText.length * 0.8
+                }
             ),
         };
 
-        const response = await fetch("/auth/get_token", requestOptions);
+        const response = await fetch("/api/t5_paraphrase_unauth", requestOptions);
         const data = await response.json();
+        changeResultText(data.summarized)
     }
 
     const handleAlgorithmClick = async (token) => {
@@ -30,12 +35,17 @@ const Demoform = () => {
                 "Bearer": token
             },
             body: JSON.stringify(
-
+                {
+                    "text": inputText,
+                    "sentences_to_return": inputText.split('.').length / 2
+                }
             ),
         };
 
-        const response = await fetch("/auth/get_token", requestOptions);
+        const response = await fetch("/api/paraphrase_unauth", requestOptions);
         const data = await response.json();
+        console.log(data)
+        changeResultText(data.summarized)
     }
 
 
@@ -79,28 +89,26 @@ const Demoform = () => {
             <div className="row">
                 <Slide left duration={1000}>
                     <div className="eight columns">
-                        <form action="" method="post" id="contactForm">
-                            <fieldset>
-                                <div>
-                                    <label htmlFor="input-text">
-                                        Введите текст
-                                    </label>
-                                    <textarea
-                                        cols="30"
-                                        rows="10"
-                                        id="input-text"
-                                        name="input-text-area"
-                                        onChange={event => changeInputText(event.target.value)}
-                                    >{inputText}</textarea>
-                                </div>
+                        <fieldset>
+                            <div>
+                                <label htmlFor="input-text">
+                                    Введите текст
+                                </label>
+                                <textarea
+                                    cols="30"
+                                    rows="10"
+                                    id="input-text"
+                                    name="input-text-area"
+                                    onChange={event => changeInputText(event.target.value)}
+                                >{inputText}</textarea>
+                            </div>
 
-                                <SubmitText label="Обработать с помощью:" type="Алгоритм"
-                                            handleButtonClick={handleAlgorithmClick(null)}/>
-                                <SubmitText label="" type="Нейросеть"
-                                            handleButtonClick={handleNNClick(null)}/>
-                                <Result/>
-                            </fieldset>
-                        </form>
+                            <SubmitText label="Обработать с помощью:" type="Алгоритм"
+                                        handleButtonClick={handleAlgorithmClick}/>
+                            <SubmitText label="" type="Нейросеть"
+                                        handleButtonClick={handleNNClick}/>
+                            <Result/>
+                        </fieldset>
 
                         <div id="message-warning"> Error boy</div>
                         <div id="message-success">
@@ -123,7 +131,7 @@ export const FullAccessForm = () => {
     const [resultText, changeResultText] = useState("")
     const [inputText, changeInputText] = useState("")
     const [token, setToken] = useContext(UserContext)
-    const handleNNClick = async () => {
+    const handleNNClick = async (token) => {
         const requestOptions = {
             method: "POST",
             headers: {
@@ -131,15 +139,20 @@ export const FullAccessForm = () => {
                 "Bearer": token
             },
             body: JSON.stringify(
-
+                {
+                    "text": inputText,
+                    "min_length": inputText.length * 0.2,
+                    "max_length": inputText.length * 0.8
+                }
             ),
         };
 
-        const response = await fetch("/auth/get_token", requestOptions);
+        const response = await fetch("/api/t5_paraphrase", requestOptions);
         const data = await response.json();
+        changeResultText(data.summarized)
     }
 
-    const handleAlgorithmClick = async () => {
+    const handleAlgorithmClick = async (token) => {
         const requestOptions = {
             method: "POST",
             headers: {
@@ -147,12 +160,17 @@ export const FullAccessForm = () => {
                 "Bearer": token
             },
             body: JSON.stringify(
-
+                {
+                    "text": inputText,
+                    "sentences_to_return": inputText.split('.').length / 2
+                }
             ),
         };
 
-        const response = await fetch("/auth/get_token", requestOptions);
+        const response = await fetch("/api/paraphrase", requestOptions);
         const data = await response.json();
+        console.log(data)
+        changeResultText(data.summarized)
     }
 
 
@@ -196,28 +214,28 @@ export const FullAccessForm = () => {
             <div className="row">
                 <Slide left duration={1000}>
                     <div className="eight columns">
-                        <form action="" method="post" id="contactForm">
-                            <fieldset>
-                                <div>
-                                    <label htmlFor="input-text">
-                                        Введите текст
-                                    </label>
-                                    <textarea
-                                        cols="30"
-                                        rows="10"
-                                        id="input-text"
-                                        name="input-text-area"
-                                        onChange={event => changeInputText(event.target.value)}
-                                    >{inputText}</textarea>
-                                </div>
 
-                                <SubmitText label="Обработать с помощью:" type="Алгоритм"
-                                            handleButtonClick={handleAlgorithmClick(null)}/>
-                                <SubmitText label="" type="Нейросеть"
-                                            handleButtonClick={handleNNClick(null)}/>
-                                <Result/>
-                            </fieldset>
-                        </form>
+                        <fieldset>
+                            <div>
+                                <label htmlFor="input-text">
+                                    Введите текст
+                                </label>
+                                <textarea
+                                    cols="30"
+                                    rows="10"
+                                    id="input-text"
+                                    name="input-text-area"
+                                    onChange={event => changeInputText(event.target.value)}
+                                >{inputText}</textarea>
+                            </div>
+
+                            <SubmitText label="Обработать с помощью:" type="Алгоритм"
+                                        handleButtonClick={handleAlgorithmClick}/>
+                            <SubmitText label="" type="Нейросеть"
+                                        handleButtonClick={handleNNClick}/>
+                            <Result/>
+                        </fieldset>
+
 
                         <div id="message-warning"> Error boy</div>
                         <div id="message-success">
