@@ -71,7 +71,7 @@ const Header = () => {
                             <a href='#demofunctional' className="button btn button-header1">
                                 Перейти к демо версии
                             </a>
-                            <a href='/' className="button btn header-button2">
+                            <a href="#registration" className="button btn header-button2">
                                 Зарегистрироваться
                             </a>
                         </ul>

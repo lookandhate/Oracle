@@ -12,7 +12,7 @@ import hashlib
 import jwt
 
 oauth2scheme = OAuth2PasswordBearer(tokenUrl="/auth/get_token")
-JWT_SECRET = 'TOP SECRET'
+JWT_SECRET = "TOP SECRET"
 
 
 def get_user(db: Session, user_id: int):
@@ -24,27 +24,38 @@ def get_user_by_username(db: Session, username: str):
 
 
 def create_user(db: Session, user: UserCreate):
-    hashed_password = hashlib.sha512(user.password.encode('utf-8')).hexdigest()
-    created_user_instance = models.User(username=user.username, password=hashed_password)
+    hashed_password = hashlib.sha512(user.password.encode("utf-8")).hexdigest()
+    created_user_instance = models.User(
+        username=user.username, password=hashed_password
+    )
     db.add(created_user_instance)
     db.commit()
     db.refresh(created_user_instance)
     return created_user_instance
 
 
-def create_shorten_request(db: Session, summarized_data, text, user: User, shorten_type: str,
-                           shorten_request: ResponseModel | None = None):
+def create_shorten_request(
+    db: Session,
+    summarized_data,
+    text,
+    user: User,
+    shorten_type: str,
+    shorten_request: ResponseModel | None = None,
+):
     user = get_user_by_username(db, user.username)
     if shorten_request:
-        db_item = models.ShortenRequest(text=shorten_request.text,
-                                        shorten_type=shorten_request.shorten_type,
-                                        result=shorten_request.result,
-                                        user_id=shorten_request.user_id),
+        db_item = (
+            models.ShortenRequest(
+                text=shorten_request.text,
+                shorten_type=shorten_request.shorten_type,
+                result=shorten_request.result,
+                user_id=shorten_request.user_id,
+            ),
+        )
     else:
-        db_item = models.ShortenRequest(text=text,
-                                        shorten_type=shorten_type,
-                                        result=summarized_data,
-                                        user=user)
+        db_item = models.ShortenRequest(
+            text=text, shorten_type=shorten_type, result=summarized_data, user=user
+        )
     db.add(db_item)
     db.commit()
     db.refresh(db_item)
@@ -52,8 +63,9 @@ def create_shorten_request(db: Session, summarized_data, text, user: User, short
 
 def auth_user(db: Session, username: str, password: str):
     user: models.User = get_user_by_username(db, username)
-    if not user: return False
-    if not user.verify_password(hashlib.sha512(password.encode('utf-8')).hexdigest()):
+    if not user:
+        return False
+    if not user.verify_password(hashlib.sha512(password.encode("utf-8")).hexdigest()):
         return False
     return user
 
@@ -62,14 +74,16 @@ def create_token(user: models.User):
     user_instance = User.from_orm(user)
     token = jwt.encode(user_instance.dict(), JWT_SECRET)
 
-    return dict(access_token=token, token_type='bearer')
+    return dict(access_token=token, token_type="bearer")
 
 
-def get_current_user(db: Session = Depends(get_session), token: str = Depends(oauth2scheme)):
+def get_current_user(
+    db: Session = Depends(get_session), token: str = Depends(oauth2scheme)
+):
     try:
-        print(f'{token=}')
+        print(f"{token=}")
         payload = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
-        print(f'{payload=}')
+        print(f"{payload=}")
         user = db.query(models.User).get(payload["id"])
     except Exception as e:
         raise fastapi.HTTPException(status_code=401, detail="Invalid email or password")

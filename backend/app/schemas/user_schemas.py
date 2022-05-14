@@ -15,4 +15,4 @@ class User(UserBase):
     requests = list[ResponseModelBase]
 
     class Config:
-        orm_mode=True
+        orm_mode = True

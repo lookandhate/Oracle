@@ -8,31 +8,6 @@ import Registration from "./Components/Registration";
 import {UserContext} from "./context/UserContext";
 import Login from "./Components/Login";
 
-// class App extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             foo: "bar",
-//             resumeData: {}
-//         };
-//
-//         ReactGA.initialize("UA-110570651-1");
-//         ReactGA.pageview(window.location.pathname);
-//     }
-//
-//
-//     render() {
-//         return (
-//             <div className="App">
-//                 <Header/>
-//                 <About/>
-//                 <Demoform/>
-//                 <Footer/>
-//                 <Registration/>
-//             </div>
-//         );
-//     }
-// }
 
 const App = () => {
     const [token, setToken] = useContext(UserContext)

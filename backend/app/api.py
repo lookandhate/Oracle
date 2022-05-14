@@ -10,20 +10,17 @@ app = FastAPI()
 global_init()
 session = get_session()
 
-origins = [
-    "http://localhost:3000",
-    "localhost:3000"
-]
+origins = ["http://localhost:3000", "localhost:3000"]
 
 app.include_router(shakespeare_router)
 app.include_router(auth_router)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
 
 

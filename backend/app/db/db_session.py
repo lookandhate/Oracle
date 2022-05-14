@@ -10,10 +10,11 @@ def global_init():
     if __factory:
         return
 
-    conn_str = f'sqlite:///test.sqlite3?check_same_thread=False'
+    conn_str = f"sqlite:///test.sqlite3?check_same_thread=False"
     engine = sqlalchemy.create_engine(conn_str)
     __factory = sqlalchemy.orm.sessionmaker(bind=engine)
     import backend.app.db.models
+
     SqlAlchemyBase.metadata.create_all(engine)
 
 

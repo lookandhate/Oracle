@@ -25,4 +25,3 @@ class ResponseModel(ResponseModelBase):
 
     class Config:
         orm_mode = True
-

@@ -2,19 +2,24 @@ import logging
 
 from transformers import pipeline
 from summarizer import Summarizer, summarize
+
 InputText = OutputText = str
 
 
 class T5Summary:
     def __init__(self):
         print("Loading T5Summary")
-        self.pipeline = pipeline("summarization", model="t5-base", tokenizer="t5-base", framework="tf")
+        self.pipeline = pipeline(
+            "summarization", model="t5-base", tokenizer="t5-base", framework="tf"
+        )
 
-    def summarize(self, text: InputText, min_length: int = 25, max_length: int = 100) -> OutputText:
+    def summarize(
+        self, text: InputText, min_length: int = 25, max_length: int = 100
+    ) -> OutputText:
         return self.pipeline(text, min_length=min_length, max_length=max_length)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     text = """Solar Light by Night Most people living in towns consider it a usual thing that streets are lit at 
     night. But street lights need a power supply (источник энергии) therefore distant areas with no source of 
     electricity remain in darkness until the sun comes up again. With new appliances now offered by several British 
@@ -49,5 +54,5 @@ if __name__ == '__main__':
     some projects water will be heated by the warmth of mountains at a depth of four-five km. It is planned that 
     plants working on the energy of the solar heat provided by the sun will be built on a larger scale. 
 """
-    #summ = T5Summary()
-    print(summ.summarize(text, 50, 500)[0]['summary_text'])
+    # summ = T5Summary()
+    print(summ.summarize(text, 50, 500)[0]["summary_text"])
