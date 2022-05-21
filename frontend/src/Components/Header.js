@@ -40,7 +40,7 @@ const Header = () => {
                                     <NavBarElement hrefTag="#demofunctional" textVal="Полная версия"/>
                                 </li>
                                 <li>
-                                    <button onClick={setToken}>Logout</button>
+                                    <button onClick={setToken}>Выйти</button>
                                 </li>
                             </>)
                         : (
@@ -49,7 +49,7 @@ const Header = () => {
                                     <NavBarElement hrefTag="#demofunctional" textVal="Демо версия"/>
                                 </li>
                                 <li>
-                                    <NavBarElement hrefTag="#login" textVal="Login"/>
+                                    <NavBarElement hrefTag="#login" textVal="Вход"/>
                                 </li>
                                 <li>
                                     <NavBarElement hrefTag="#registration" textVal="Регистрация"/>
