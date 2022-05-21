@@ -40,25 +40,23 @@ export default function Registration() {
                     <div className="formbg-outer">
                         <div className="formbg">
                             <div className="formbg-inner padding-horizontal--48">
-                                <span className="padding-bottom--15">Registration</span>
+                                <span className="padding-bottom--15">Регистрация</span>
                                 <form id="stripe-login" method="post">
                                     <div className="field padding-bottom--24">
-                                        <label htmlFor="email">Login</label>
+                                        <label htmlFor="email">Логин</label>
                                         <input type="email" name="email" value={login}
                                                onChange={(e => setLogin(e.target.value))}/>
                                     </div>
                                     <div className="field padding-bottom--24">
                                         <div className="grid--50-50">
-                                            <label htmlFor="password">Password</label>
-                                            <div className="reset-pass">
-                                                <a href="#">Forgot your password?</a>
-                                            </div>
+                                            <label htmlFor="password">Пароль</label>
                                         </div>
                                         <input type="password" name="password" value={password}
                                                onChange={event => setPassword(event.target.value)}/>
                                     </div>
                                     <div className="field padding-bottom--24">
-                                        <input type="submit" name="submit" defaultValue="Continue" onClick={handleSubmit}/>
+                                        <input type="submit" name="submit" defaultValue="Continue"
+                                               onClick={handleSubmit}/>
                                     </div>
 
                                 </form>

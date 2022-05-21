@@ -40,7 +40,7 @@ const Header = () => {
                                     <NavBarElement hrefTag="#demofunctional" textVal="Полная версия"/>
                                 </li>
                                 <li>
-                                    <button onClick={setToken}>Logout</button>
+                                    <button onClick={setToken}>Выйти</button>
                                 </li>
                             </>)
                         : (
